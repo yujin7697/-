@@ -1,5 +1,5 @@
 package Domain.Common.Service;
 
-public class MemberJoinService {
+public class MemberService {
 
 }
