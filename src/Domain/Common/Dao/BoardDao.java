@@ -126,8 +126,8 @@ public class BoardDao {
 //	내가 쓴 글 수정
 	public int update(BoardDto dto) throws Exception{
 		pstmt = conn.prepareStatement("update tbl_contents set title=?,contents=?");
-		pstmt.setString(3, dto.getTitle());
-		pstmt.setString(4, dto.getContents());
+		pstmt.setString(1, dto.getTitle());
+		pstmt.setString(2, dto.getContents());
 		
 		return pstmt.executeUpdate();
 	}
