@@ -24,6 +24,9 @@ public class MemberService {
 	
 //	회원 가입하기
 	public boolean Join(MemberDto dto) throws Exception{
+		int result = dao.insert(dto);
+		if(result>0)
+			return true;
 		return false;
 	}
 	
