@@ -43,12 +43,12 @@ public class MemberService {
 	}
 	
 //	로그아웃
-	public Boolean logout(String id, String role) {
+	public Boolean logout(String id, String pw) {
 		
 	}
 	
 
-//	역할 반환 함수
+//	역할 반환 함수(회원인지 관리자인지)
 	public String getRole(String id, String pw) {
 
 	}

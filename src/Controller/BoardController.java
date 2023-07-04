@@ -54,7 +54,7 @@ public class BoardController {
 		
 		Boolean rValue = false;
 		try {
-			rValue = service.InsertBoard(dto,number);
+			rValue = service.boardAdd(dto);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
