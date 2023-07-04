@@ -48,7 +48,7 @@ public class MAINGUI extends JFrame implements ActionListener, KeyListener {
 		panel.setLayout(null);
 
 //		테이블 열이름
-		String[] columns = { "number", "id", "title", "date" };
+		String[] columns = { "No", "아이디", "제목", "작성날짜","조회수" };
 //		테이블 데이터
 //		테이블 모델
 		DefaultTableModel model = new DefaultTableModel(columns, 0);
