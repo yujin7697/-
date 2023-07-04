@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import Domain.Common.Dto.BoardDto;
 import Domain.Common.Dto.CommentDto;
 
 public class CommentDao {
@@ -17,6 +18,14 @@ public class CommentDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	
+	private static CommentDao instance;
+	public static CommentDao getInstance() {
+		if(instance==null)
+			instance = new CommentDao();
+		return instance;
+	}
 	
 	private CommentDao(){
 		id = "root";
@@ -48,19 +57,21 @@ public class CommentDao {
 		return list;
 	}
 //	댓글 작성 
-	public int insert(CommentDto dto) throws Exception{
-		pstmt = conn.prepareStatement("insert into tbl_comment values(?,?,now())");
-		pstmt.setString(1, dto.getId());
+	public int insert(BoardDto bdto, CommentDto dto) throws Exception{
+		pstmt = conn.prepareStatement("INSERT INTO tbl_comment (number, comment, id, date)"
+				+ " VALUES (?, ?, ?,now());");
+		pstmt.setInt(1, bdto.getNumber());
 		pstmt.setString(2, dto.getComment());
+		pstmt.setString(3, dto.getId());
 		
 		return pstmt.executeUpdate();
 	}
 //	댓글 수정
 	public int update(CommentDto dto) throws Exception{
-		pstmt = conn.prepareStatement("update tbl_comment set id=?,comment=?,date=now()");
+		pstmt = conn.prepareStatement("update tbl_comment set id=?,comment=?,date=now() where No=?");
 		pstmt.setString(1, dto.getId());
 		pstmt.setString(2, dto.getComment());
-		pstmt.setString(3, dto.getDate());
+		pstmt.setInt(3, dto.getNo());
 		
 		return pstmt.executeUpdate();
 	}
