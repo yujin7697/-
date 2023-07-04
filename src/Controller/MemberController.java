@@ -99,7 +99,7 @@ public class MemberController {
 				Map<String,Object> result = new HashMap();
 				String role = null;
 				try {
-					result = service.Login(id,pw);
+					result = service.login(id,pw);
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
