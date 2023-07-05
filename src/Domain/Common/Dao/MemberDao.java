@@ -26,6 +26,11 @@ public class MemberDao {
 		return instance;
 	}
 	
+	//id 게터
+	public String getId() {
+        return id;
+    }
+	
 	public MemberDao(){
 		id = "root";
 		pw = "1234";
@@ -38,25 +43,29 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
+	//쓸지 안쓸지 모른다. 고민중...
 //	회원 id/pw 수정
-	public int update(MemberDto dto) throws Exception{
-		pstmt = conn.prepareStatement("update tbl_member set id=?,pw=?");
-		pstmt.setString(1, dto.getId());
-		pstmt.setString(2, dto.getPw());
-		
-		return pstmt.executeUpdate();
-	}
+//	public int update(MemberDto dto) throws Exception{
+//		pstmt = conn.prepareStatement("update tbl_member set id=?,pw=?");
+	
+	//아이디에 따라 비번바꾸는 쿼리문
+//		pstmt = conn.prepareStatement("update tbl_member set pw=? where id=?");
+//		pstmt.setString(1, dto.getId());
+//		pstmt.setString(2, dto.getPw());
+//		
+//		return pstmt.executeUpdate();
+//	}
 	
 //	회원 id/pw 저장
 	public int insert(MemberDto dto) throws Exception{
-		pstmt = conn.prepareStatement("insert into tbl_member values(?,?)");
+		pstmt = conn.prepareStatement("insert into tbl_member values(?,?,'MEMBER')");
 		pstmt.setString(1, dto.getId());
 		pstmt.setString(2, dto.getPw());
 		
 		return pstmt.executeUpdate();
 	}
 // 	회원 id/pw 조회
-	public List<MemberDto> select() throws Exception{
+	public List<MemberDto> select(String id, String pw) throws Exception{
 		List<MemberDto> list = new ArrayList();
 		MemberDto dto = null;
 		pstmt = conn.prepareStatement("select * from tbl_member");
@@ -72,10 +81,14 @@ public class MemberDao {
 		return list;
 	}
 //	회원 id/pw 삭제
-	public int delete(MemberDto dto) throws Exception{
-		pstmt = conn.prepareStatement("delete from tbl_member where id = ?");
-		pstmt.setString(1,dto.getId());
+	public int delete(String id) throws Exception{
 		
-		return pstmt.executeUpdate();
+		pstmt = conn.prepareStatement("delete from tbl_member where id = ?");
+		pstmt.setString(1,id);
+		int result=pstmt.executeUpdate();
+		pstmt.close();
+		
+		return result;
+		
 	}
 }
