@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import Domain.Common.Dao.BoardDao;
+import Domain.Common.Dao.BookDao;
 import Domain.Common.Dao.CommentDao;
 import Domain.Common.Dto.BoardDto;
 import Domain.Common.Service.Auth.Session;
 
 public class BoardService {
 
-	private BoardDao Bdao;
+	private BookDao Bdao;
 	private CommentDao Cdao;
 
 	// 싱글톤

@@ -7,7 +7,7 @@ import java.util.Map;
 import Domain.Common.Dto.BoardDto;
 import Domain.Common.Service.BoardService;
 
-public class BoardController {
+public class BoardController implements SubController{
 
 	private static final BoardDto Dto = null;
 	private BoardService service; // 파라미터를 보드소비스로 전달하기 위한 변수 생성

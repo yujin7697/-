@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import Domain.Common.Dao.CommentDao;
 import Domain.Common.Dao.MemberDao;
+import Domain.Common.Dao.MemberDaoImpl;
 import Domain.Common.Dto.BoardDto;
 import Domain.Common.Dto.CommentDto;
 import Domain.Common.Dto.MemberDto;
@@ -15,7 +16,7 @@ class DaoTests {
 
 	@Test
 	void Test1_MemberDaoTest() throws Exception{
-		MemberDao dao = MemberDao.getInstance(); 
+		MemberDao dao = MemberDaoImpl.getInstance(); 
 		assertNotNull(dao);
 		
 		dao.insert(new MemberDto("JWG","1234"));
